@@ -11,11 +11,12 @@ public class User {
     private String password;
     private UserType userType;
     
-    public User(String name, String document, String email, String password) {
+    public User(String name, String document, String email, String password, UserType userType) {
         this.name = name;
         this.document = document;
         this.email = email;
         this.password = password;
+        this.userType = userType;
     }
 
     public UUID getId() {
@@ -65,4 +66,5 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+    
 }
