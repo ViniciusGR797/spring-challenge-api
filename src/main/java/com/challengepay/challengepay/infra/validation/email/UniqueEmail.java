@@ -12,9 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueEmail {
-    
   String message() default "email is already registered";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
-
 }

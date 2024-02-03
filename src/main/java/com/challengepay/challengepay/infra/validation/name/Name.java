@@ -12,9 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Name {
-    
   String message() default "input a valid name";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
-
 }

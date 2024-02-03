@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class Transaction {
-
     private UUID id;
     private UUID senderId;
     private UUID receiverId;
@@ -47,5 +46,4 @@ public class Transaction {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }   
-    
 }

@@ -51,6 +51,6 @@ public class DocumentValidator implements ConstraintValidator<Document, String> 
             digit2 = 0;
         }
 
-        return (digit1 == (document.charAt(9) - '0')) && (digit2 == (document.charAt(10) - '0'));
+        return (digit1 == (document.charAt(document.length() - 2) - '0')) && (digit2 == (document.charAt(document.length() - 1) - '0'));
     }
 }

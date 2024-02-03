@@ -20,7 +20,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(of="id")
 public class UserSchema {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -41,15 +40,8 @@ public class UserSchema {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    public UserSchema(String name, String document, String email, String password, UserType userType) {
-        this.name = name;
-        this.document = document;
-        this.email = email;
-        this.password = password;
-        this.userType = userType;
-    }
-
     public UserSchema(User user) {
+        this.id = user.getId();
         this.name = user.getName();
         this.document = user.getDocument();
         this.email = user.getEmail();
@@ -67,6 +59,6 @@ public class UserSchema {
         );
         user.setId(this.getId());
         return user;
-      }
+    }
 
 }

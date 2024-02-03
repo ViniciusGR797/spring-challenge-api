@@ -30,7 +30,6 @@ public record UserRegistrationData(
         @NotBlank(message = "password field is required")
         String password,
 
-        @NotBlank(message = "userType field is required")
         UserType userType
         
 ) implements IUserRegistrationData { }

@@ -23,5 +23,4 @@ public class CreateUserUseCase {
 
         return this.userGateway.create(user);
     }
-
 }

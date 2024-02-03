@@ -1,5 +1,9 @@
 package com.challengepay.challengepay.usecase.user.dto;
 
-public class IUserUpdateData {
-    
+import com.challengepay.challengepay.entity.user.model.UserType;
+
+public interface IUserUpdateData {
+    String name();
+    String password();
+    UserType userType();
 }

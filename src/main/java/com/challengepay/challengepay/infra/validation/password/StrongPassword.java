@@ -12,9 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface StrongPassword {
-    
   String message() default "input a strong password";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
-
 }

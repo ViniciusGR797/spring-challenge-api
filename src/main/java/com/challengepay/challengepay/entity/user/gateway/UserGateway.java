@@ -7,7 +7,6 @@ import java.util.UUID;
 import com.challengepay.challengepay.entity.user.model.User;
 
 public interface UserGateway {
-
     User create(User user);
     User update(User user);
     void delete(UUID id);
@@ -17,5 +16,4 @@ public interface UserGateway {
     Optional<User> findByEmail(String email);
     List<User> findByName(String nameFragment);
     List<User> findAll();
-
 }
