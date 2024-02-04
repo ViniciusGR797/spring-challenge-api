@@ -23,8 +23,8 @@ public class UpdateUserController {
 
     @PutMapping("/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserPublicData createUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateData data) throws UserNotFoundException {
-        return new UserPublicData(updateUserUseCase.execute(id, data));
+    public UserPublicData createUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateData payload) throws UserNotFoundException {
+        return new UserPublicData(updateUserUseCase.execute(id, payload));
     }
 
 }
