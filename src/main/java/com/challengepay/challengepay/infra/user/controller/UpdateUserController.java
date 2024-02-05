@@ -12,6 +12,8 @@ import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.infra.user.dto.UserUpdateData;
 import com.challengepay.challengepay.usecase.user.UpdateUserUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class UpdateUserController {
 
@@ -21,6 +23,7 @@ public class UpdateUserController {
         this.updateUserUseCase = updateUserUseCase;
     }
 
+    @Operation(summary = "Update user", description = "Updating user data", tags = "User")
     @PutMapping("/users/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserPublicData createUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateData payload) throws UserNotFoundException {

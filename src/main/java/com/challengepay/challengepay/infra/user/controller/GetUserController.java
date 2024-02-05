@@ -10,6 +10,8 @@ import com.challengepay.challengepay.entity.user.model.User;
 import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.usecase.user.GetUserUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class GetUserController {
     private final GetUserUseCase getUserUseCase;
@@ -18,6 +20,7 @@ public class GetUserController {
         this.getUserUseCase = getUserUseCase;
     }
 
+    @Operation(summary = "Get user by id", description = "Listing user by id", tags = "User")
     @GetMapping("/users/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserPublicData getUser(@PathVariable UUID id) throws UserNotFoundException {

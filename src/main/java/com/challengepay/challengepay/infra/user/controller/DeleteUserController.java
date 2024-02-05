@@ -10,6 +10,8 @@ import com.challengepay.challengepay.entity.user.exception.UserNotFoundException
 import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.usecase.user.DeleteUserUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class DeleteUserController {
 
@@ -19,6 +21,7 @@ public class DeleteUserController {
         this.deleteUserUseCase = deleteUserUseCase;
     }
 
+    @Operation(summary = "Delete user", description = "Deleting a user", tags = "User")
     @DeleteMapping("/users/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserPublicData deleteUser(@PathVariable UUID id) throws UserNotFoundException {

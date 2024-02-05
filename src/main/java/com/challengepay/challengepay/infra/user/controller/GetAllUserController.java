@@ -7,6 +7,8 @@ import com.challengepay.challengepay.entity.user.model.User;
 import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.usecase.user.GetAllUserUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 import java.util.List;
 
 @RestController
@@ -18,6 +20,7 @@ public class GetAllUserController {
         this.getAllUserUseCase = getAllUserUseCase;
     }
 
+    @Operation(summary = "Get all users", description = "Listing all users", tags = "User")
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<UserPublicData> GetAllUser() {
