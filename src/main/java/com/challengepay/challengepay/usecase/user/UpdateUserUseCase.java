@@ -6,12 +6,15 @@ import com.challengepay.challengepay.entity.user.exception.UserNotFoundException
 import com.challengepay.challengepay.entity.user.gateway.UserGateway;
 import com.challengepay.challengepay.entity.user.model.User;
 import com.challengepay.challengepay.usecase.user.dto.IUserUpdateData;
+import com.challengepay.challengepay.usecase.utils.IPasswordEncryptor;
 
 public class UpdateUserUseCase {
     private final UserGateway userGateway;
+    private final IPasswordEncryptor iPasswordEncryptor;
 
-    public UpdateUserUseCase(UserGateway userGateway) {
+    public UpdateUserUseCase(UserGateway userGateway, IPasswordEncryptor iPasswordEncryptor) {
         this.userGateway = userGateway;
+        this.iPasswordEncryptor = iPasswordEncryptor;
     }
 
     public User execute(UUID id, IUserUpdateData data) throws UserNotFoundException {
@@ -19,8 +22,12 @@ public class UpdateUserUseCase {
                 .orElseThrow(UserNotFoundException::new);
 
         user.setName(data.name());
-        user.setPassword(data.password());
         user.setUserType(data.userType());
+
+        if(!iPasswordEncryptor.matches(data.password(), user.getPassword())){
+            String encodedPassword = iPasswordEncryptor.encodePassword(data.password());
+            user.setPassword(encodedPassword);
+        }
 
         return this.userGateway.update(user);
     }
