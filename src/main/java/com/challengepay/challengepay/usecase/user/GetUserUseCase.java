@@ -15,8 +15,9 @@ public class GetUserUseCase {
 
     public User execute(UUID id) throws UserNotFoundException {
         return this.userGateway
-                .findById(id)
-                .orElseThrow(UserNotFoundException::new);
+            .findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User with ID " + id + " not found"));
+        
     }
 
 }

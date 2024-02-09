@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import com.challengepay.challengepay.entity.user.model.User;
+import com.challengepay.challengepay.infra.config.middlewares.JwtToken;
 import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.usecase.user.GetAllUserUseCase;
 
@@ -21,6 +22,7 @@ public class GetAllUserController {
     }
 
     @Operation(summary = "Get all users", description = "Listing all users", tags = "User")
+    @JwtToken
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<UserPublicData> GetAllUser() {

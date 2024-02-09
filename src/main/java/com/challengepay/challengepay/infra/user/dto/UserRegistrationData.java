@@ -1,11 +1,11 @@
 package com.challengepay.challengepay.infra.user.dto;
 
 import com.challengepay.challengepay.entity.user.model.UserType;
-import com.challengepay.challengepay.infra.validation.document.Document;
-import com.challengepay.challengepay.infra.validation.document.UniqueDocument;
-import com.challengepay.challengepay.infra.validation.email.UniqueEmail;
-import com.challengepay.challengepay.infra.validation.name.Name;
-import com.challengepay.challengepay.infra.validation.password.StrongPassword;
+import com.challengepay.challengepay.infra.utils.validation.document.Document;
+import com.challengepay.challengepay.infra.utils.validation.document.UniqueDocument;
+import com.challengepay.challengepay.infra.utils.validation.email.UniqueEmail;
+import com.challengepay.challengepay.infra.utils.validation.name.Name;
+import com.challengepay.challengepay.infra.utils.validation.password.StrongPassword;
 import com.challengepay.challengepay.usecase.user.dto.IUserRegistrationData;
 
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,5 +1,6 @@
 package com.challengepay.challengepay.usecase.user;
 
+import com.challengepay.challengepay.entity.user.exception.InvalidCredentialsException;
 import com.challengepay.challengepay.entity.user.exception.UserNotFoundException;
 import com.challengepay.challengepay.entity.user.gateway.UserGateway;
 import com.challengepay.challengepay.entity.user.model.User;
@@ -18,12 +19,12 @@ public class LoginUserUseCase {
         this.iTokenManager = iTokenManager;
     }
 
-    public String execute(ILoginCredentialData data) throws UserNotFoundException, Exception {
+    public String execute(ILoginCredentialData data) throws UserNotFoundException, InvalidCredentialsException {
         User user = this.userGateway.findByEmail(data.email())
-                .orElseThrow(UserNotFoundException::new);
+            .orElseThrow(() -> new InvalidCredentialsException("Invalid login credentials to access the application"));
 
         if(!iPasswordEncryptor.matches(data.password(), user.getPassword())){
-            throw new Exception("Invalid credentials");
+            throw new InvalidCredentialsException("Invalid login credentials to access the application");
         }
 
         String token = iTokenManager.createToken(user.getId().toString());

@@ -1,4 +1,4 @@
-package com.challengepay.challengepay.infra.validation.document;
+package com.challengepay.challengepay.infra.utils.validation.document;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -18,6 +18,7 @@ public class UniqueDocumentValidator implements ConstraintValidator<UniqueDocume
 
   @Override
   public boolean isValid(String document, ConstraintValidatorContext context) {
+    if (document == null || document.isBlank()) return false;
     if (repository != null) {
       Optional<UserSchema> user = repository.findByDocument(document);
       return user.isEmpty();

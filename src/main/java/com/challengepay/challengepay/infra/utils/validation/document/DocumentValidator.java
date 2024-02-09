@@ -1,4 +1,4 @@
-package com.challengepay.challengepay.infra.validation.document;
+package com.challengepay.challengepay.infra.utils.validation.document;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

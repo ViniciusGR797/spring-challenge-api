@@ -1,8 +1,8 @@
 package com.challengepay.challengepay.infra.user.dto;
 
 import com.challengepay.challengepay.entity.user.model.UserType;
-import com.challengepay.challengepay.infra.validation.name.Name;
-import com.challengepay.challengepay.infra.validation.password.StrongPassword;
+import com.challengepay.challengepay.infra.utils.validation.name.Name;
+import com.challengepay.challengepay.infra.utils.validation.password.StrongPassword;
 import com.challengepay.challengepay.usecase.user.dto.IUserUpdateData;
 
 import io.swagger.v3.oas.annotations.media.Schema;

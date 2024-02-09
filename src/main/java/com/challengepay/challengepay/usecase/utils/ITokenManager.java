@@ -6,5 +6,5 @@ public interface ITokenManager {
     String createToken(String id);
     String getTokenId(String token);
     Map<String, Object> getClaims(String token);
-    boolean isTokenValid(String token);
+    Object[] isTokenValid(String token);
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.challengepay.challengepay.infra.user.dto.ErrorResponse;
+import com.challengepay.challengepay.infra.config.exception.ErrorResponse;
 import com.challengepay.challengepay.infra.user.dto.UserPublicData;
 import com.challengepay.challengepay.infra.user.dto.UserRegistrationData;
 import com.challengepay.challengepay.usecase.user.CreateUserUseCase;
@@ -44,7 +44,7 @@ public class CreateUserController {
                 mediaType = "application/json",
                 schema = @Schema(implementation = ErrorResponse.class), 
                 examples = { @ExampleObject(
-                    value = "{\"status\": 400, \"message\": \"Bad request\", \"error\": \"Bad request\", \"timestamp\": \"2022-02-04T15:30:00\"}")})),
+                    value = "{\"status\": 400, \"message\": \"Bad request\", \"details\": [\"Bad request\"], \"timestamp\": \"2022-02-04T15:30:00\"}")})),
         @ApiResponse(
             responseCode = "404", 
             description = "Not found",
@@ -52,7 +52,7 @@ public class CreateUserController {
                 mediaType = "application/json",
                 schema = @Schema(implementation = ErrorResponse.class), 
                 examples = { @ExampleObject(
-                    value = "{\"status\": 404, \"message\": \"Data not found\", \"error\": \"Not Found\", \"timestamp\": \"2022-02-04T15:30:00\"}")})),
+                    value = "{\"status\": 404, \"message\": \"Data not found\", \"details\": [\"Not Found\"], \"timestamp\": \"2022-02-04T15:30:00\"}")})),
         @ApiResponse(
             responseCode = "500", 
             description = "Internal server error",
@@ -60,7 +60,7 @@ public class CreateUserController {
                 mediaType = "application/json",
                 schema = @Schema(implementation = ErrorResponse.class), 
                 examples = { @ExampleObject(
-                    value = "{\"status\": 500, \"message\": \"Internal server error\", \"error\": \"Internal Server Error\", \"timestamp\": \"2022-02-04T15:30:00\"}")}))
+                    value = "{\"status\": 500, \"message\": \"Internal server error\", \"details\": [\"Internal Server Error\"], \"timestamp\": \"2022-02-04T15:30:00\"}")}))
     })
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)

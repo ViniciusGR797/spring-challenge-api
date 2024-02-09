@@ -1,4 +1,4 @@
-package com.challengepay.challengepay.infra.utils;
+package com.challengepay.challengepay.infra.utils.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -7,11 +7,14 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import com.challengepay.challengepay.usecase.utils.ITokenManager;
 
+import org.springframework.stereotype.Component;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class TokenManager implements ITokenManager {
 
     private static final String JWT_SECRET_KEY = "DyHj+OPBK1H5f+uS3RzV2xSTe8bk+LzphtJqvCrlXcEdYsakbEcN3tkBEnAMO+SF/+M0cHuL73oaAT9fhwBrcA==";
@@ -55,15 +58,19 @@ public class TokenManager implements ITokenManager {
     }
 
     @Override
-    public boolean isTokenValid(String token) {
+    public Object[] isTokenValid(String token) {
+        Object[] result = new Object[2];
         try {
             Jwts.parserBuilder()
                 .setSigningKey(JWT_SECRET_KEY.getBytes())
                 .build()
                 .parseClaimsJws(token);
-            return true;
+            result[0] = true;
+            result[1] = "Valid token";
         } catch (Exception e) {
-            return false;
+            result[0] = false;
+            result[1] = e.getMessage();
         }
+        return result;
     }
 }

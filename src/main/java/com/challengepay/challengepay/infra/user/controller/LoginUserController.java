@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.challengepay.challengepay.entity.user.exception.InvalidCredentialsException;
 import com.challengepay.challengepay.entity.user.exception.UserNotFoundException;
 import com.challengepay.challengepay.infra.user.dto.LoginCredentialData;
 import com.challengepay.challengepay.infra.user.dto.LoginPublicData;
@@ -25,7 +26,7 @@ public class LoginUserController {
     @Operation(summary = "Login user", description = "Authenticate user credentials", tags = "User")
     @PostMapping("/users/login")
     @ResponseStatus(HttpStatus.OK)
-    public LoginPublicData loginUser(@Valid @RequestBody LoginCredentialData payload) throws UserNotFoundException, Exception  {
+    public LoginPublicData loginUser(@Valid @RequestBody LoginCredentialData payload) throws UserNotFoundException, InvalidCredentialsException  {
         return new LoginPublicData(loginUserUseCase.execute(payload));
     }
 }

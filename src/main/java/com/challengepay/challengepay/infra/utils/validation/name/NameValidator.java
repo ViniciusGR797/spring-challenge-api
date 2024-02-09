@@ -1,4 +1,4 @@
-package com.challengepay.challengepay.infra.validation.name;
+package com.challengepay.challengepay.infra.utils.validation.name;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
